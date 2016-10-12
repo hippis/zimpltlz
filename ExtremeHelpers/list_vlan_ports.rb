@@ -9,7 +9,7 @@ TAG_START = "Tag:"
 
 IP_ROW = "Primary IP:"
 
-Net::SSH.start( "192.168.10.2", "reader", :password => "" ) do |ssh|
+Net::SSH.start( "", "reader", :password => "", :kex => "diffie-hellman-group1-sha1", :host_key => "ssh-dss" ) do |ssh|
 
   result = ssh.exec!('show switch | include SysName')
   result.each_line do |line|
